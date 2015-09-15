@@ -1,0 +1,16 @@
+venv/*
+venv/**
+
+data/*
+data/**
+
+scripts/R/*
+scripts/R/**
+
+*.pyc
+*.sqlite
+*.sqlite-journal
+
+config/secrets.json
+
+.coverage

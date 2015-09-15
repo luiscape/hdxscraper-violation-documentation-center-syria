@@ -1,0 +1,25 @@
+language: python
+python:
+  - "2.7"
+
+#
+# Command to install dependencies.
+#
+install:
+  - pip install coveralls
+  - make setup
+
+#
+# Run tests + coverage.
+#
+script:
+  - make test
+
+#
+# Send coverage report to coveralls.io
+#
+after_success:
+  - coveralls
+
+notifications:
+    email: false
