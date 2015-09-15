@@ -17,13 +17,12 @@ from utilities.prompt_format import item
 #
 # Global variables.
 #
-DATA_DIR = p.dirname(p.dirname(p.dirname(__file__)))
-DEV_CONFIG_PATH = p.join(DATA_DIR, 'config', 'dev.json')
-PROD_CONFIG_PATH = p.join(DATA_DIR, 'config', 'prod.json')
+CONFIG_DIR = os.path.join(p.dirname(p.dirname(p.dirname(__file__))), 'config')
 
-
-def LoadConfig(config_path=DEV_CONFIG_PATH, verbose=True, test=False):
+def LoadConfig(file_name='dev.json', verbose=True, test=False):
   '''Load configuration parameters.'''
+
+  config_path = os.path.join(CONFIG_DIR, file_name)
 
   try:
     with open(config_path) as json_file:
@@ -34,6 +33,5 @@ def LoadConfig(config_path=DEV_CONFIG_PATH, verbose=True, test=False):
     if verbose:
       print e
     return False
-
 
   return config

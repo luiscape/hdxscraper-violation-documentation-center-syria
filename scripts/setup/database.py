@@ -1,4 +1,3 @@
-
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
@@ -16,7 +15,7 @@ from os import path as p
 from utilities.prompt_format import item
 
 
-def CreateTables(config_path=Config.DEV_CONFIG_PATH, verbose=True):
+def CreateTables(config_path='dev.json', verbose=True):
   '''Creating the tables of the new database.'''
 
   #
@@ -37,9 +36,9 @@ def CreateTables(config_path=Config.DEV_CONFIG_PATH, verbose=True):
   #
   sql_statements = {}
 
-  for endpoint in config_data:
-    table_name = endpoint['database']['table_name']
-    statement = " TEXT, ".join(endpoint['database']['fields'])
+  for table in config_data:
+    table_name = table['database']['table_name']
+    statement = " TEXT, ".join(table['database']['fields'])
     statement = 'CREATE TABLE IF NOT EXISTS %s(%s TEXT)' % (table_name, statement)
     sql_statements[table_name] = statement
 
