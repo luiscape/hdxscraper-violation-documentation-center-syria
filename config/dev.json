@@ -9,47 +9,72 @@
   "url": "http://floods.unosat.org/geoportal/rest/find/document?rid=local&rids=local&start=1&max=10000&orderBy=relevance&dojo.preventCache=1436368315391&f=json",
   "database":
     [{
-        "name": "unprocessed_data",
-        "long_name": "UNOSAT Flood Portal Unprocessed Data",
+        "name": "martyr",
+        "long_name": "Latest Martyr data.",
         "pii_columns": [],
         "database": {
-           "table_name": "unprocessed_data",
+           "table_name": "martyr",
            "fields": [
-                "title",
-                "id",
-                "updated",
-                "summary",
-                "created",
-                "country",
-                "link_href",
-                "link_type",
-                "hdx_dataset_id",
-                "crisis_code",
-                "bbox"
+                "Name",
+                "Status",
+                "Sex",
+                "Province",
+                "Area",
+                "Date_of_Death",
+                "Cause_of_Death"
             ]
         }
     },
     {
-        "name": "processed_data",
-        "long_name": "UNOSAT Flood Portal Processed / Clean Data",
+        "name": "detainees",
+        "long_name": "Latest detainees.",
         "pii_columns": [],
         "database": {
-           "table_name": "processed_data",
+           "table_name": "detainees",
            "fields": [
-                "title",
-                "id",
-                "updated",
-                "summary",
-                "created",
-                "country",
-                "link_href",
-                "link_type",
-                "hdx_dataset_id",
-                "crisis_code",
-                "file_extension",
-                "file_name",
-                "bbox"
+                "Name",
+                "Detention_Date",
+                "Sex",
+                "Province",
+                "Area",
+                "Detention_Background",
+                "Release_Date"
             ]
         }
-    }]
+    },
+    {
+        "name": "missing",
+        "long_name": "Missing people.",
+        "pii_columns": [],
+        "database": {
+           "table_name": "missing",
+           "fields": [
+                "Name",
+                "Disappearance_Date",
+                "Found_Date",
+                "Sex",
+                "Province",
+                "Area",
+                "Missing_Place"
+            ]
+        }
+    },
+    {
+        "name": "regine_fatalities",
+        "long_name": "Latest regime fatalities.",
+        "pii_columns": [],
+        "database": {
+           "table_name": "regime_fatalities",
+           "fields": [
+                "Name",
+                "Rank",
+                "Sex",
+                "Province",
+                "Area",
+                "Date_of_Death",
+                "Cause_of_Death"
+            ]
+        }
+    }
+    ]
 }

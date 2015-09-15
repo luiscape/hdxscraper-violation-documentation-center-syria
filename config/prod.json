@@ -1,55 +1,93 @@
 {
-  "hdx_site": "https://data.hdx.rwlabs.org/",
+  "hdx_site": "https://test-data.hdx.rwlabs.org/",
   "hdx_key": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "json_folder": "data",
   "verbose": false,
   "delete_resources": false,
   "delete_datasets": false,
   "update_all_datasets": false,
-  "url": "http://floods.unosat.org/geoportal/rest/find/document?rid=local&rids=local&start=1&max=10000&orderBy=relevance&dojo.preventCache=1436368315391&f=json",
+  "endpoints": [
+    {
+      "url": "http://www.vdc-sy.info/index.php/en/martyrs/",
+      "name": "martyr",
+      "description": "Latest Martyr data."
+    },
+    {
+      "url": "http://www.vdc-sy.info/index.php/en/detainees/",
+      "name": "detainees",
+      "description": "Latest detainees."
+    },
+    {
+      "url": "http://www.vdc-sy.info/index.php/en/missing/",
+      "name": "missing",
+      "description": "Missing people."
+    },
+    {
+      "url": "http://www.vdc-sy.info/index.php/en/otherstatistics/",
+      "name": "regine_fatalities",
+      "long_name": "Latest regime fatalities."
+    }
+  ],
   "database":
     [{
-        "name": "unprocessed_data",
-        "long_name": "UNOSAT Flood Portal Unprocessed Data",
         "pii_columns": [],
         "database": {
-           "table_name": "unprocessed_data",
+           "table_name": "martyr",
            "fields": [
-                "title",
-                "id",
-                "updated",
-                "summary",
-                "created",
-                "country",
-                "link_href",
-                "link_type",
-                "hdx_dataset_id",
-                "crisis_code",
-                "bbox"
+                "Name",
+                "Status",
+                "Sex",
+                "Province",
+                "Area",
+                "Date_of_Death",
+                "Cause_of_Death"
             ]
         }
     },
     {
-        "name": "processed_data",
-        "long_name": "UNOSAT Flood Portal Processed / Clean Data",
         "pii_columns": [],
         "database": {
-           "table_name": "processed_data",
+           "table_name": "detainees",
            "fields": [
-                "title",
-                "id",
-                "updated",
-                "summary",
-                "created",
-                "country",
-                "link_href",
-                "link_type",
-                "hdx_dataset_id",
-                "crisis_code",
-                "file_extension",
-                "file_name",
-                "bbox"
+                "Name",
+                "Detention_Date",
+                "Sex",
+                "Province",
+                "Area",
+                "Detention_Background",
+                "Release_Date"
             ]
         }
-    }]
+    },
+    {
+        "pii_columns": [],
+        "database": {
+           "table_name": "missing",
+           "fields": [
+                "Name",
+                "Disappearance_Date",
+                "Found_Date",
+                "Sex",
+                "Province",
+                "Area",
+                "Missing_Place"
+            ]
+        }
+    },
+    {
+        "pii_columns": [],
+        "database": {
+           "table_name": "regime_fatalities",
+           "fields": [
+                "Name",
+                "Rank",
+                "Sex",
+                "Province",
+                "Area",
+                "Date_of_Death",
+                "Cause_of_Death"
+            ]
+        }
+    }
+    ]
 }
