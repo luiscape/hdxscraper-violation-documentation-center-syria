@@ -13,3 +13,8 @@ pip install -r requirements.txt
 # Creates data folder.
 #
 mkdir data
+
+#
+# Setup database.
+#
+python scripts/setup/
