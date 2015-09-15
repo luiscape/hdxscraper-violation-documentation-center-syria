@@ -22,7 +22,7 @@ DEV_CONFIG_PATH = p.join(DATA_DIR, 'config', 'dev.json')
 PROD_CONFIG_PATH = p.join(DATA_DIR, 'config', 'prod.json')
 
 
-def LoadConfig(config_path=DEV_CONFIG_PATH, verbose=True):
+def LoadConfig(config_path=DEV_CONFIG_PATH, verbose=True, test=False):
   '''Load configuration parameters.'''
 
   try:
@@ -35,11 +35,5 @@ def LoadConfig(config_path=DEV_CONFIG_PATH, verbose=True):
       print e
     return False
 
-  #
-  # Perform basic quality checks.
-  #
-  if len(config['hdx_key']) is not 36:
-    print '%s API key seems to be wrong. Please check: %s' % (item('prompt_error'), os.path.split(config_path)[1])
-    return False
 
   return config
