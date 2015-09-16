@@ -5,6 +5,7 @@ import os
 import sys
 import requests
 import scraperwiki
+import progressbar as pb
 from bs4 import BeautifulSoup
 
 # Below as a helper for namespaces.
@@ -21,7 +22,7 @@ from utilities.prompt_format import item
 #
 start = 1
 
-def ExctractTotalPages(endpoint, verbose=True):
+def ExctractTotalPages(endpoint, verbose=False):
   '''Extracts the total number of pages an endpoint has.'''
 
   #
@@ -52,7 +53,7 @@ def ExctractTotalPages(endpoint, verbose=True):
 def ScrapeEndpoint(endpoint, verbose=False):
   '''Scrapes data from the Violation Documentation Center in Syria website.'''
 
-  print "Scraping the VDC website: %s." % endpoint['name']
+  print "%s Scraping the VDC website: %s." % (item('prompt_bullet').decode('utf-8'), endpoint['name'])
 
   #
   # Calculate total.
@@ -62,6 +63,12 @@ def ScrapeEndpoint(endpoint, verbose=False):
 
   if total == False:
     return False
+
+  #
+  # Configure and start progress bar.
+  #
+  widgets = [item('prompt_ping'), ' Progress:', pb.Percentage(), ' ', pb.Bar('-'), ' ', pb.ETA(), ' ']
+  pbar = pb.ProgressBar(widgets=widgets, maxval=total).start()
 
   token = endpoint['token']
   keys = endpoint['keys']
@@ -75,8 +82,6 @@ def ScrapeEndpoint(endpoint, verbose=False):
 
     if verbose:
       print 'Querying URL: %s' % u
-
-    print 'Scraping page %s / %s' % (index, total)
 
     #
     # Download data from Motivate's website.
@@ -105,8 +110,17 @@ def ScrapeEndpoint(endpoint, verbose=False):
         out.append(dict(zip(keys, col)))
         i += 1
 
+    #
+    # Append results and update progress bar.
+    #
     complete_output += out
+    pbar.update(index)
     index += 1
 
 
+  #
+  # Closes progress bar and
+  # returns output.
+  #
+  pbar.finish()
   return complete_output
