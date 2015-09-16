@@ -13,10 +13,14 @@ from utilities.prompt_format import item
 from utilities.database import CleanTable, StoreRecords
 from scraper.scrape import ExctractTotalPages, ScrapeEndpoint
 
+__version__ = 'v.0.1.1'
+
 def Main():
   '''Program wrapper.'''
 
   config = LoadConfig('dev.json')
+
+  print '%s Version: %s' % (item('prompt_bullet'), __version__)
 
   for endpoint in config['endpoints']:
     data = ScrapeEndpoint(endpoint, verbose=config['verbose'])
