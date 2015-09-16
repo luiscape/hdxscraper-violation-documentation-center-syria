@@ -1,5 +1,5 @@
 ## VDC Scraper
-Scraper for data from the Violations Documentation Center in Syria.
+Scraper for data from the [Violations Documentation Center in Syria](http://www.vdc-sy.info/index.php/en/).
 
 [![Build Status](https://travis-ci.org/luiscape/hdxscraper-violation-documentation-center-syria.svg)](https://travis-ci.org/luiscape/hdxscraper-violation-documentation-center-syria)
 
@@ -11,4 +11,4 @@ $ make setup && make test
 $ make run
 ```
 
-The output should be available as a `SQLite` database calld `scraperwiki.sqlite`.
+The output should be available as a `SQLite` database called `scraperwiki.sqlite`.
