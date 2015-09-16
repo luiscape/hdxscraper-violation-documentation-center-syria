@@ -17,7 +17,7 @@ def CleanTable(table_name, verbose=True):
   #
   # SQL statement.
   #
-  print '%s Cleaning table `%s`.' % (item('prompt_bullet'), table_name)
+  print '%s Cleaning table `%s`.' % (item('prompt_bullet').decode('utf-8'), table_name)
   sql = 'delete from {table_name}'.format(table_name=table_name)
 
   #
@@ -26,7 +26,7 @@ def CleanTable(table_name, verbose=True):
   try:
     scraperwiki.sqlite.execute(sql)
     if verbose:
-      print '%s Table `%s` cleaned successfully.' % (item('prompt_bullet'), table_name)
+      print '%s Table `%s` cleaned successfully.' % (item('prompt_bullet').decode('utf-8'), table_name)
 
   except Exception as e:
     if verbose:
@@ -41,7 +41,7 @@ def StoreRecords(data, table):
 
   try:
     for record in data:
-      scraperwiki.sqlite.save(data.keys(), record, table_name=table)
+      scraperwiki.sqlite.save(record.keys(), record, table_name=table)
 
   except Exception as e:
     print "%s Failed to store record in database." % item('prompt_error')
