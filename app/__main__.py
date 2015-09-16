@@ -5,19 +5,39 @@ import os
 import sys
 
 dir = os.path.split(os.path.split(os.path.realpath(__file__))[0])[0]
+dir = os.path.join(dir, 'scripts')
 sys.path.append(dir)
 
-from scripts.setup.load import LoadConfig
-from scripts.scraper.store import StoreRecords
-from scripts.scraper.scrape import ExctractTotalPages, ScrapeEndpoint
+from setup.load import LoadConfig
+from utilities.prompt_format import item
+from utilities.database import CleanTable, StoreRecords
+from scraper.scrape import ExctractTotalPages, ScrapeEndpoint
 
-if __name__ == '__main__':
+def Main():
+  '''Program wrapper.'''
 
   config = LoadConfig('dev.json')
 
-  i = 0
   for endpoint in config['endpoints']:
-    data = ScrapeEndpoint(endpoint, verbose=True)
-    StoreRecords(data, path='data_{index}.csv'.format(index=i))
-    i += 1
+    data = ScrapeEndpoint(endpoint, verbose=config['verbose'])
 
+    #
+    # Clean table and store new records.
+    #
+    CleanTable(endpoint['name'])
+    StoreRecords(data)
+
+
+#
+# Loading configuration and
+# running program.
+#
+if __name__ == '__main__':
+
+  try:
+    Main()
+    print '%s VDC scraped successfully.' % item('prompt_success')
+
+  except Exception as e:
+    print '%s VDC scraper failed.' % item('prompt_error')
+    print e
