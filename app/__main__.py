@@ -29,7 +29,7 @@ def Main():
     # Clean table and store new records.
     #
     CleanTable(endpoint['name'])
-    StoreRecords(data)
+    StoreRecords(data, endpoint['name'])
 
 
 #
