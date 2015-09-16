@@ -8,7 +8,7 @@ def item(i):
     'prompt_bullet': color(u" →", "blue", attrs=['bold']),
     'prompt_error':  color(u" ERROR:", "red", attrs=['bold']),
     'prompt_success': color(u" SUCCESS:", "green", attrs=['bold']),
-    'prompt_ping': color(u" *", "green", attrs=['bold']),
+    'prompt_ping': color(u" *", "red", attrs=['bold']),
     'prompt_warn': color(u" WARN:", "yellow", attrs=['bold'])
   }
 
