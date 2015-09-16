@@ -36,12 +36,12 @@ def CleanTable(table_name, verbose=True):
 
 
 
-def StoreRecords(schema, data, table):
+def StoreRecords(data, table):
   '''Store records in a ScraperWiki database.'''
 
   try:
     for record in data:
-      scraperwiki.sqlite.save(schema, record, table_name=table)
+      scraperwiki.sqlite.save(data.keys(), record, table_name=table)
 
   except Exception as e:
     print "%s Failed to store record in database." % item('prompt_error')
