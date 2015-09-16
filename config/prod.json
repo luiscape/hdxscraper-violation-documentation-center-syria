@@ -7,25 +7,61 @@
   "delete_datasets": false,
   "update_all_datasets": false,
   "endpoints": [
+     {
+       "url": "http://www.vdc-sy.info/index.php/en/martyrs",
+       "name": "martyr",
+       "description": "Latest Martyr data.",
+       "keys": [
+                 "Name",
+                 "Status",
+                 "Sex",
+                 "Province",
+                 "Area",
+                 "Date_of_Death",
+                 "Cause_of_Death"
+             ]
+     },
+     {
+       "url": "http://www.vdc-sy.info/index.php/en/detainees",
+       "name": "detainees",
+       "description": "Latest detainees.",
+       "keys": [
+            "Name",
+            "Detention_Date",
+            "Sex",
+            "Province",
+            "Area",
+            "Detention_Background",
+            "Release_Date"
+        ]
+     },
+     {
+       "url": "http://www.vdc-sy.info/index.php/en/missing",
+       "name": "missing",
+       "description": "Missing people.",
+       "keys": [
+            "Name",
+            "Disappearance_Date",
+            "Found_Date",
+            "Sex",
+            "Province",
+            "Area",
+            "Missing_Place"
+        ]
+     },
     {
-      "url": "http://www.vdc-sy.info/index.php/en/martyrs/",
-      "name": "martyr",
-      "description": "Latest Martyr data."
-    },
-    {
-      "url": "http://www.vdc-sy.info/index.php/en/detainees/",
-      "name": "detainees",
-      "description": "Latest detainees."
-    },
-    {
-      "url": "http://www.vdc-sy.info/index.php/en/missing/",
-      "name": "missing",
-      "description": "Missing people."
-    },
-    {
-      "url": "http://www.vdc-sy.info/index.php/en/otherstatistics/",
+      "url": "http://www.vdc-sy.info/index.php/en/otherstatistics",
       "name": "regine_fatalities",
-      "long_name": "Latest regime fatalities."
+      "long_name": "Latest regime fatalities.",
+      "keys": [
+                "Name",
+                "Rank",
+                "Sex",
+                "Province",
+                "Area",
+                "Date_of_Death",
+                "Cause_of_Death"
+            ]
     }
   ],
   "database":
